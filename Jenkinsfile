@@ -55,14 +55,12 @@ stage('Checkout') {
 
         stage('Push to Docker Hub') {
            steps {
-             withDockerRegistry([credentialsId: "${DOCKER_CREDENTIALS}", url: ""]) {
                 bat "docker push ${DOCKER_IMAGE}:latest"
-              }
         }
  }
       stage('Deploy Container') {
         steps {
-        sh "docker run -d -p 6000:6000 --name petclinic ${DOCKER_IMAGE}:latest"
+        bat "docker run -d -p 6000:6000 --name petclinic ${DOCKER_IMAGE}:latest"
            }
        }
 }
