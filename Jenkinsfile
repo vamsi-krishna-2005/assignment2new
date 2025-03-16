@@ -18,7 +18,7 @@ stage('Checkout') {
             bat "git config --global http.lowSpeedLimit 0"
             bat "git config --global http.lowSpeedTime 999"
             echo "Cloning repository ${GIT_REPO} (branch: ${BRANCH})..."
-            git branch: "${BRANCH}", url: "${GIT_REPO}", shallow: true
+            git branch: "${BRANCH}", url: "${GIT_REPO}"
         }
     }
 }
