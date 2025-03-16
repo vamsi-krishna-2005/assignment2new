@@ -11,9 +11,11 @@ pipeline {
 stages {
  stage('Checkout Code') {
             steps {
-                withEnv(['GIT_HTTP_VERSION=HTTP/1.1']) {
-                    git branch: 'main', url: "${GIT_REPO}"
-                }
+            bat "git config --global http.version HTTP/1.1"
+            bat "git config --global http.postBuffer 1048576000"
+            bat "git config --global core.compression 0"
+            echo "Cloning repository ${GIT_REPO} (branch: ${BRANCH})..."
+            git branch: "${BRANCH}", url: "${GIT_REPO}"
             }
         }
         
