@@ -38,7 +38,7 @@ stage('Checkout') {
                     withSonarQubeEnv("SonarQubeServer") {
                         // Ensure the project key is provided either in the pom.xml/sonar-project.properties or here
                         // For example, if needed, add -Dsonar.projectKey=sample-service
-                        bat "mvn sonar:sonar -Dsonar.login=%SONAR_TOKEN% -Dsonar.projectKey=assignment2"
+                        bat "mvn sonar:sonar -Dsonar.login=%SONAR_TOKEN% -Dsonar.projectKey=assignment2new"
                     }
                 }
             }
