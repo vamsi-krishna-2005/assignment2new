@@ -55,7 +55,7 @@ stages {
  }
       stage('Deploy Container') {
         steps {
-        sh "docker run -d -p 8080:8080 --name petclinic ${DOCKER_IMAGE}:latest"
+        sh "docker run -d -p 6000:6000 --name petclinic ${DOCKER_IMAGE}:latest"
            }
        }
 }
