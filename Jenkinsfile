@@ -9,15 +9,20 @@ pipeline {
  }
 
 stages {
- stage('Checkout Code') {
-            steps {
+stage('Checkout') {
+    steps {
+        retry(3) {
             bat "git config --global http.version HTTP/1.1"
-            bat "git config --global http.postBuffer 1048576000"
+            bat "git config --global http.postBuffer 1073741824"
             bat "git config --global core.compression 0"
+            bat "git config --global http.lowSpeedLimit 0"
+            bat "git config --global http.lowSpeedTime 999"
             echo "Cloning repository ${GIT_REPO} (branch: ${BRANCH})..."
-            git branch: "${BRANCH}", url: "${GIT_REPO}"
-            }
+            git branch: "${BRANCH}", url: "${GIT_REPO}", shallow: true
         }
+    }
+}
+
         
         stage('Build') {
             steps {
