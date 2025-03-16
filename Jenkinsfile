@@ -52,12 +52,7 @@ stage('Checkout') {
                 }
             }
         }
-
-        stage('Push to Docker Hub') {
-           steps {
-                bat "docker push ${DOCKER_IMAGE}:latest"
-        }
- }
+ 
       stage('Deploy Container') {
         steps {
         bat "docker run -d -p 6000:6000 --name petclinic ${DOCKER_IMAGE}:latest"
