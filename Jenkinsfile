@@ -28,7 +28,7 @@ stages {
             steps {
                 echo 'Running SonarQube analysis...'
                 withCredentials([string(credentialsId: 'sonar-token-id', variable: 'SONAR_TOKEN')]) {
-                    withSonarQubeEnv("${SONARQUBE_SERVER}") {
+                    withSonarQubeEnv("SonarQubeServer") {
                         // Ensure the project key is provided either in the pom.xml/sonar-project.properties or here
                         // For example, if needed, add -Dsonar.projectKey=sample-service
                         bat "mvn sonar:sonar -Dsonar.login=%SONAR_TOKEN% -Dsonar.projectKey=assignment2"
