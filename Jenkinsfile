@@ -5,7 +5,7 @@ pipeline {
  BRANCH = 'main'
  SONARQUBE_TOKEN = credentials('sonar-token-id') // Store in Jenkins credentials
  DOCKER_IMAGE = '2022bcd0022/spring-petclinic'
-  DOCKER_CREDENTIALS = 'docker-hub-credentials'
+ DOCKER_CREDENTIALS = 'docker-hub-credentials'
  }
 
 stages {
@@ -48,7 +48,7 @@ stage('Checkout') {
             steps {
                 script {
                     echo "Building Docker image for sample-service..."
-                    bat 'docker build -t ${DOCKER_IMAGE}:latest .'
+                    bat 'docker build -t %DOCKER_IMAGE%:latest .'
                 }
             }
         }
