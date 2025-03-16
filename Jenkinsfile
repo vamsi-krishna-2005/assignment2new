@@ -48,7 +48,7 @@ stage('Checkout') {
             steps {
                 script {
                     echo "Building Docker image for sample-service..."
-                    bat 'docker build -t %DOCKER_IMAGE%:latest .'
+                    docker build -f .devcontainer/Dockerfile -t %DOCKER_IMAGE%:latest .
                 }
             }
         }
